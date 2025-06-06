@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hani's Game Code Buyer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div id="codeDisplay" class="code-box">🔒 Your Game Code Will Appear Here</div>
+
+    <div class="controls">
+      <select id="gameSelect">
+        <option value="">🎮 Select a Game</option>
+        <option value="CUBER">Cube Clicker</option>
+        <option value="KREKO">3D FPS Game</option>
+      </select>
+      <button id="showCodeBtn">Show Code</button>
+    </div>
+  </div>
+
+  <script>
+    const gameCodes = {
+      "CUBE123": "Cube Clicker",
+      "KREKO": "3D FPS Game"
+    };
+
+    const select = document.getElementById("gameSelect");
+    const codeDisplay = document.getElementById("codeDisplay");
+    const button = document.getElementById("showCodeBtn");
+
+    function typeCode(text) {
+      codeDisplay.textContent = "";
+      codeDisplay.classList.remove("animate");
+      void codeDisplay.offsetWidth; // restart animation
+
+      let i = 0;
+      const interval = setInterval(() => {
+        if (i < text.length) {
+          codeDisplay.textContent += text[i];
+          i++;
+        } else {
+          clearInterval(interval);
+          codeDisplay.classList.add("animate");
+        }
+      }, 70);
+    }
+
+    button.addEventListener("click", () => {
+      const selectedCode = select.value;
+      if (selectedCode) {
+        typeCode(`✅ Code: ${selectedCode}`);
+      } else {
+        codeDisplay.textContent = "❌ Please select a game!";
+      }
+    });
+  </script>
+</body>
+</html>
