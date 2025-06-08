@@ -2,6 +2,7 @@ const gameCodes = {
   "CUBER": "CUBER",
   "KREKO": "KREKO",
   "GARSGOR": "GARSGOR",
+  "TOWNY": "TOWNY",
   // Add more if needed
 };
 
